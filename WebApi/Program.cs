@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-
+using System.Reflection;
 using WebApi.DBOperations;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddDbContext<BookStoreDbContext>(options =>
     options.UseInMemoryDatabase("BookStoreDB"));
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
